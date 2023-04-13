@@ -64,11 +64,6 @@ def get_tech_news(amount):
 
 
 if __name__ == "__main__":
-    # URL = "https://blog.betrybe.com"
-    # URL = "https://blog.betrybe.com/tecnologia/arquivo-bin/"
-    # URL = "https://blog.betrybe.com/noticias/axie-infinity-reabre-transacoes-apos-perder-bilhoes/"
-    # URL = "https://blog.betrybe.com/carreira/curriculo-para-primeiro-emprego/"
-    # URL = "https://blog.betrybe.com/carreira/empowerment-lideranca-o-que-e/"
     URL = "https://blog.betrybe.com/carreira/gatilho-mental-tudo-sobre/"
     a = fetch(URL)
     # b = scrape_updates(a)
