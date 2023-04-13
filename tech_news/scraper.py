@@ -27,7 +27,8 @@ def scrape_updates(html_content):
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
+    selector = Selector(text=html_content)
+    return selector.css(".next::attr(href)").get()
 
 
 # Requisito 4
@@ -45,5 +46,6 @@ if __name__ == "__main__":
     URL = "https://blog.betrybe.com"
     # URL = "https://httpbin.org/delay/5"
     a = fetch(URL)
-    b = scrape_updates(a)
+    # b = scrape_updates(a)
+    b = scrape_next_page_link(a)
     print(b)
