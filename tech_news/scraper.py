@@ -5,10 +5,6 @@ from parsel import Selector
 
 from tech_news.database import (
     create_news,
-    # find_news,
-    # get_collection,
-    # insert_or_update,
-    # search_news,
 )
 
 
@@ -89,7 +85,3 @@ def get_tech_news(amount):
             new_list.append(scrape_news(new_fetch))
     create_news(new_list)
     return new_list
-
-
-if __name__ == "__main__":
-    a = get_tech_news(13)
