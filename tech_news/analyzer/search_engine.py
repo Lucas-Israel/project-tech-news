@@ -47,23 +47,3 @@ def search_by_category(category):
         new_list.append((element["title"], element["url"]))
 
     return new_list
-
-
-if __name__ == "__main__":
-    # inputs = ["bacana", "BACANA", "2", "Titulo invalido"]
-
-    # for BUSCA in inputs:
-    #     a = search_by_title(BUSCA)
-    #     print(a)
-
-    # inputs = ["2021-04-04", "2022-04-07", "2023-05-14", "04-04-2021"]
-
-    # for BUSCA in inputs:
-    #     a = search_by_date(BUSCA)
-    #     print(a)
-
-    inputs = ["Novidades", "ferramentas", "ziriguidum"]
-
-    for BUSCA in inputs:
-        a = search_by_category(BUSCA)
-        print(a)
