@@ -3,6 +3,14 @@ import requests
 import re
 from parsel import Selector
 
+from tech_news.database import (
+    create_news,
+    # find_news,
+    # get_collection,
+    # insert_or_update,
+    # search_news,
+)
+
 
 # Requisito 1
 def fetch(url):
@@ -58,15 +66,30 @@ def scrape_news(html_content):
     }
 
 
+def full_list_link(amount):
+    URL = "https://blog.betrybe.com/"
+    new_list = []
+    articles_per_page = 12
+    count = 0
+    while URL and count < (amount + 1):
+        fetch_result = fetch(URL)
+        new_list.extend(scrape_updates(fetch_result))
+        URL = scrape_next_page_link(fetch_result)
+        count += articles_per_page
+    return new_list
+
+
 # Requisito 5
 def get_tech_news(amount):
-    """Seu código deve vir aqui"""
+    full_list = full_list_link(amount)
+    new_list = []
+    for index, url in enumerate(full_list):
+        if index < amount:
+            new_fetch = fetch(url)
+            new_list.append(scrape_news(new_fetch))
+    create_news(new_list)
+    return new_list
 
 
 if __name__ == "__main__":
-    URL = "https://blog.betrybe.com/carreira/gatilho-mental-tudo-sobre/"
-    a = fetch(URL)
-    # b = scrape_updates(a)
-    # b = scrape_next_page_link(a)
-    b = scrape_news(a)
-    print(b)
+    a = get_tech_news(13)
