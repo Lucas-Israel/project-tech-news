@@ -37,7 +37,16 @@ def search_by_date(date):
 
 # Requisito 9
 def search_by_category(category):
-    """Seu código deve vir aqui"""
+    new_list = []
+    if not category:
+        return new_list
+    search_content = search_news(
+        {"category": {"$regex": category, "$options": "i"}}
+    )
+    for element in search_content:
+        new_list.append((element["title"], element["url"]))
+
+    return new_list
 
 
 if __name__ == "__main__":
@@ -47,8 +56,14 @@ if __name__ == "__main__":
     #     a = search_by_title(BUSCA)
     #     print(a)
 
-    inputs = ["2021-04-04", "2022-04-07", "2023-05-14", "04-04-2021"]
+    # inputs = ["2021-04-04", "2022-04-07", "2023-05-14", "04-04-2021"]
+
+    # for BUSCA in inputs:
+    #     a = search_by_date(BUSCA)
+    #     print(a)
+
+    inputs = ["Novidades", "ferramentas", "ziriguidum"]
 
     for BUSCA in inputs:
-        a = search_by_date(BUSCA)
+        a = search_by_category(BUSCA)
         print(a)
